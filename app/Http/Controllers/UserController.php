@@ -21,11 +21,31 @@ class UserController extends Controller
 				'user' => $user,
 				'token' => $token
 			];
-			// return $this->respond('Giriş yapıldı', compact('user', 'token'));
 		};
 
 		return 'hata';
-		// return $this->fail('Telefon numarası ya da şifre hatalı.'); */
+	}
+
+	public function register(Request $request, JWTAuth $jwt)
+	{
+
+		if (User::wherePhone($request->phone)->exists()) {
+			return ['msg' => 'Böyle bir kullanıcı kayıtlı.'];
+		}
+		$request->validate([
+			'name'      => 'required',
+			'phone'     => 'required',
+			'password'	=> 'required',
+		]);
+
+		$user = User::create([
+			'name' => $request->name,
+			'phone' => $request->phone,
+			'password' => Hash::make($request->password)
+		]);
+
+		$user->token = $jwt->fromUser($user);
+		return ['msg' => 'kayit olundu', 'user' => $user];
 	}
 
 

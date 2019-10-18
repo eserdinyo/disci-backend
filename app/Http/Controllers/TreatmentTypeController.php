@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
+use App\Treatment_type;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class TreatmentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return Patient::all();
+        return Treatment_type::all();
     }
 
     /**
@@ -41,28 +41,21 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Treatment_type  $treatment_type
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Treatment_type $treatment_type)
     {
-        return $patient;
-       
-        /* $patients = Patient::where('name', 'LIKE', '%' . $slug . '%')
-            ->get();
-
-        return [
-            'patients' => $patients,
-        ]; */
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Treatment_type  $treatment_type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Treatment_type $treatment_type)
     {
         //
     }
@@ -71,10 +64,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Patient  $patient
+     * @param  \App\Treatment_type  $treatment_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Treatment_type $treatment_type)
     {
         //
     }
@@ -82,10 +75,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Treatment_type  $treatment_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Treatment_type $treatment_type)
     {
         //
     }

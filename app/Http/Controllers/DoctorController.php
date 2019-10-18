@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
+use App\Doctor;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return Patient::all();
+        return Doctor::all();
     }
 
     /**
@@ -41,28 +41,21 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Doctor $doctor)
     {
-        return $patient;
-       
-        /* $patients = Patient::where('name', 'LIKE', '%' . $slug . '%')
-            ->get();
-
-        return [
-            'patients' => $patients,
-        ]; */
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Doctor $doctor)
     {
         //
     }
@@ -71,10 +64,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Patient  $patient
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Doctor $doctor)
     {
         //
     }
@@ -82,10 +75,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Doctor $doctor)
     {
         //
     }

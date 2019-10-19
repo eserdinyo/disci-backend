@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Doctor;
+use App\Patient;
+use App\Treatment_type;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -36,19 +39,34 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'treatment_tip'         => 'required',
+            'treatment_tip'          => 'required',
             'start_date'             => 'required',
             'finish_date'            => 'required',
-            'doctor_id'              => 'required|integer',
-            'patient_id'             => 'required|integer',
+            'doctor_id'              => 'required',
+            'patient_id'             => 'required',
         ]);
 
 
-        $appointment = Appointment::create($request->all());
-        return response()->json([
+
+        $doctor = Doctor::findOrFail($request->doctor_id);
+        $patient = Patient::findOrFail($request->patient_id);
+        $treatment_type =  Treatment_type::findOrFail($request->treatment_tip);
+        $title = $patient->name . " " . $patient->surname . " - " . $treatment_type->name . " - Dr. " . $doctor->name . " " . $doctor->surname;
+
+        $appointment = Appointment::create([
+            'start' => $request->start_date,
+            'end' => $request->finish_date,
+            'title' => $title,
+            'class' => 'type_' . $treatment_type->type
+        ]);
+
+
+
+        return $appointment;
+        /* return response()->json([
             'msg' => 'Appointment created succesfully.',
-            'data' => $appointment,
-        ]);
+            'data' => $res_appointment,
+        ]); */
     }
 
     /**

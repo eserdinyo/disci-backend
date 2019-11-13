@@ -14,7 +14,12 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return Patient::all();
+        // return Patient::all();
+        $users = Patient::with('treatment')->get();
+
+
+        return $users;
+
     }
 
     /**
@@ -46,7 +51,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return $patient;
+        return $patient->toArray();
        
         /* $patients = Patient::where('name', 'LIKE', '%' . $slug . '%')
             ->get();

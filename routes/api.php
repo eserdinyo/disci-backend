@@ -23,6 +23,7 @@ Route::post('appointment', 'AppointmentController@store');
 
 // types
 Route::get('types', 'TreatmentTypeController@index');
+Route::post('types', 'TreatmentTypeController@store');
 
 // doctor
 Route::get('doctor', 'DoctorController@index');

@@ -35,51 +35,14 @@ class TreatmentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type = Treatment_type::create([
+            'type' => count(Treatment_type::all()->toArray()) + 1,
+            'name' => $request->name
+        ]);
+        return response()->json([
+            'msg' => 'Type created succesfully.',
+            'data' => $type,
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Treatment_type  $treatment_type
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Treatment_type $treatment_type)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Treatment_type  $treatment_type
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Treatment_type $treatment_type)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Treatment_type  $treatment_type
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Treatment_type $treatment_type)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Treatment_type  $treatment_type
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Treatment_type $treatment_type)
-    {
-        //
-    }
 }

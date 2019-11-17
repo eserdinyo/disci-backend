@@ -19,6 +19,7 @@ class CreateTreatmentsTable extends Migration
             $table->unsignedInteger('treatment_type_id');
             $table->unsignedInteger('doctor_id');
             $table->float('price');
+            $table->timestamps();
         });
     }
 

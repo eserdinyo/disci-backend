@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\Doctor;
+use App\Treatment_type;
+
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -43,22 +46,18 @@ class PatientController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Patient  $patient
-     * @return \Illuminate\Http\Response
-     */
     public function show(Patient $patient)
     {
-        return $patient->toArray();
-       
-        /* $patients = Patient::where('name', 'LIKE', '%' . $slug . '%')
-            ->get();
+        $treatments =  $patient->treatment()->get();
+        foreach ($treatments as $treatment) {
+            $treatment->doctor_id = Doctor::find($treatment->doctor_id);
+            $treatment->treatment_type_id = Treatment_type::find($treatment->treatment_type_id);
+        }
 
         return [
-            'patients' => $patients,
-        ]; */
+            'patient' => $patient,
+            'treatments' => $treatments
+        ];
     }
 
     /**

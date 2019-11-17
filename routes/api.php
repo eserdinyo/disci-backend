@@ -6,6 +6,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// patients
 Route::get('patient', 'PatientController@index');
 Route::get('patient/{patient}', 'PatientController@show');
 
@@ -27,3 +28,4 @@ Route::post('types', 'TreatmentTypeController@store');
 
 // doctor
 Route::get('doctor', 'DoctorController@index');
+Route::get('doctor/{id}', 'DoctorController@show');

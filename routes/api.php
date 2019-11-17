@@ -17,6 +17,7 @@ Route::post('register', 'UserController@register');
 // treatments
 Route::post('treatment', 'TreatmentController@store');
 Route::get('treatment', 'TreatmentController@index');
+Route::get('treatment/{treatment}', 'TreatmentController@show');
 
 // appointments
 Route::get('appointment', 'AppointmentController@index');

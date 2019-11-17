@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Treatment;
+use App\Note;
 use Illuminate\Http\Request;
 
-class TreatmentController extends Controller
+class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TreatmentController extends Controller
      */
     public function index()
     {
-        return Treatment::all();
+        //
     }
 
     /**
@@ -35,44 +35,27 @@ class TreatmentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'patient_id'         => 'required',
-            'treatment_type_id'  => 'required',
-            'doctor_id'          => 'required',
-            'price'              => 'required',
-        ]);
-
-
-        $treatment = Treatment::create($request->all());
-        return response()->json([
-            'msg' => 'Treatment created succesfully.',
-            'data' => $treatment,
-        ]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Treatment  $treatment
+     * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show(Treatment $treatment)
+    public function show(Note $note)
     {
-        $notes = $treatment->notes()->get();
-
-        return [
-            'notes' => $notes,
-            'treatment' => $treatment
-        ];
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Treatment  $treatment
+     * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit(Treatment $treatment)
+    public function edit(Note $note)
     {
         //
     }
@@ -81,10 +64,10 @@ class TreatmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Treatment  $treatment
+     * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Treatment $treatment)
+    public function update(Request $request, Note $note)
     {
         //
     }
@@ -92,10 +75,10 @@ class TreatmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Treatment  $treatment
+     * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Treatment $treatment)
+    public function destroy(Note $note)
     {
         //
     }

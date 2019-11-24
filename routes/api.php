@@ -30,3 +30,7 @@ Route::post('types', 'TreatmentTypeController@store');
 // doctor
 Route::get('doctor', 'DoctorController@index');
 Route::get('doctor/{id}', 'DoctorController@show');
+
+// notes
+Route::get('note', 'NoteController@index');
+Route::post('note', 'NoteController@store');

@@ -35,7 +35,17 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'treatment_id'         => 'required',
+            'detail'               => 'required',
+        ]);
+
+
+        $note = Note::create($request->all());
+        return response()->json([
+            'msg' => 'Not created succesfully.',
+            'data' => $note,
+        ]);
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Treatment;
+use App\Patient;
+use App\Treatment_type;
 use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
@@ -59,6 +61,8 @@ class TreatmentController extends Controller
     public function show(Treatment $treatment)
     {
         $notes = $treatment->notes()->get();
+        $treatment['patient'] = Patient::find($treatment->patient_id);
+        $treatment['type'] = Treatment_type::find($treatment->treatment_type_id);
 
         return [
             'notes' => $notes,

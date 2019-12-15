@@ -15,14 +15,18 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // return Patient::all();
         $users = Patient::with('treatment')->get();
 
+        $fisrtName = $request->has('first_name') ? $request->get('first_name') : null;
+
+        if($fisrtName) {
+            $users = Patient::with('treatment')->where('name','like',$fisrtName.'%')->get();
+        }
 
         return $users;
-
     }
 
     /**
